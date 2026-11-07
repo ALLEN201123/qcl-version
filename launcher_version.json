@@ -1,0 +1,17 @@
+{
+    "latestRelease": {
+        "versionCode": 362,
+        "versionName": "1.6.0",
+        "date": "2026-11-07",
+        "url": [
+            "https://github.com/ALLEN201123/Quanta-Craft-Launcher/releases/download/v1.6.0/QCL-release-1.6.0-universal.apk",
+            "https://github.com/ALLEN201123/Quanta-Craft-Launcher/releases/download/v1.6.0/QCL-release-1.6.0-arm64.apk",
+            "https://github.com/ALLEN201123/Quanta-Craft-Launcher/releases/download/v1.6.0/QCL-release-1.6.0-arm.apk",
+            "https://github.com/ALLEN201123/Quanta-Craft-Launcher/releases/download/v1.6.0/QCL-release-1.6.0-x86_64.apk",
+            "https://github.com/ALLEN201123/Quanta-Craft-Launcher/releases/download/v1.6.0/QCL-release-1.6.0-x86.apk"
+        ],
+        "netdiskUrl": "https://pan.quark.cn/s/f2c26c4fb66b",
+        "updateLog": "【1.6.0：老版本也能用 MobileGlues 了 —— 内置 SFPEW 兼容层】\n\n这一版的核心是：**把 SimpleFPEWrapper 当成兼容层叠在渲染器上**，让原本只能跑 1.17+ 的\nMobileGlues 也能跑 1.8.9、b1.x 这些远古/固定管线版本。\n\n一、为什么以前 MG 跑不了老版本\n\nMobileGlues 只实现 GLES 3.x，**没有固定管线**（glBegin/glEnd、glMatrixMode 这类即时模式）。\n而 1.16 及更早的游戏大量依赖固定管线 —— 所以以前 MG 的最低版本被卡在 1.17。\n\n现在 SFPEW 补上了这一层：游戏经 libSimpleFPEWrapper.so 解析 GL 符号，\n固定管线调用被翻译成 GLES，MG 只承担 EGL 与驱动。\n\n**真机实测通过**：inf-20100618（infdev 远古版）+ MobileGlues，\n日志显示 GL RENDERER: Adreno 750 | OpenGL ES 3.2 (SFPEW 26.11-dev)。\n\n二、怎么用\n\n1. 渲染器选 MobileGlues；\n2. 直接启动老版本 —— **不需要开任何开关**（内置渲染器是自动叠加的）。\n\n自带固定管线的渲染器（Krypton Wrapper / Holy GL4ES / VGPU / Zink）会自动不叠加，\n避免多一层透传开销。装了 Angelica / Actinium 这类自带 FPE 的模组时，整层跳过。\n\n三、渲染器选择界面改成卡片式\n\n以前一行纯文本塞「名称 / 版本区间 / 推荐 / 内置 / 当前 / 警告」六七项，读起来像乱码。\n现在每条是一张卡片：名称 + 状态徽章、版本区间 + 一句说明、有问题时才出现的红色警告；\n当前使用的整卡浅蓝高亮。「高级设置」独立成灰卡，不会跟渲染器混淆。\n\n四、更正一处此前的错误结论\n\n1.5.8 曾把 26.3 崩溃归因到 MobileGlues 的 glGetString 返回 NULL，**那个结论是错的**。\n真正起作用的是追加官方参数 --graphicsBackend vulkan，它跟渲染器无关 ——\n换任何渲染器都同样生效。README 已按事实更正，不再把 26.3 的启动问题算在 MG 头上。\n\n（本版为 1.6.0，versionCode 362）"
+    },
+    "latestPrerelease": null
+}
