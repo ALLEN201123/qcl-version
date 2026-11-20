@@ -1,16 +1,16 @@
 {
     "latestRelease": {
-        "versionCode": 366,
-        "versionName": "1.6.4",
+        "versionCode": 367,
+        "versionName": "1.6.5",
         "date": "2026-11-20",
         "url": [
-            "https://github.com/ALLEN201123/Quanta-Craft-Launcher/releases/download/v1.6.4/QCL-release-1.6.4-universal.apk",
-            "https://github.com/ALLEN201123/Quanta-Craft-Launcher/releases/download/v1.6.4/QCL-release-1.6.4-arm64.apk",
-            "https://github.com/ALLEN201123/Quanta-Craft-Launcher/releases/download/v1.6.4/QCL-release-1.6.4-arm.apk",
-            "https://github.com/ALLEN201123/Quanta-Craft-Launcher/releases/download/v1.6.4/QCL-release-1.6.4-x86_64.apk",
-            "https://github.com/ALLEN201123/Quanta-Craft-Launcher/releases/download/v1.6.4/QCL-release-1.6.4-x86.apk"
+            "https://github.com/ALLEN201123/Quanta-Craft-Launcher/releases/download/v1.6.5/QCL-release-1.6.5-universal.apk",
+            "https://github.com/ALLEN201123/Quanta-Craft-Launcher/releases/download/v1.6.5/QCL-release-1.6.5-arm64.apk",
+            "https://github.com/ALLEN201123/Quanta-Craft-Launcher/releases/download/v1.6.5/QCL-release-1.6.5-arm.apk",
+            "https://github.com/ALLEN201123/Quanta-Craft-Launcher/releases/download/v1.6.5/QCL-release-1.6.5-x86_64.apk",
+            "https://github.com/ALLEN201123/Quanta-Craft-Launcher/releases/download/v1.6.5/QCL-release-1.6.5-x86.apk"
         ],
         "netdiskUrl": "https://pan.quark.cn/s/f2c26c4fb66b",
-        "updateLog": "【1.6.4：愚人节版本不该一刀切】\n\n上一版（1.6.3）我判断错了：把所有愚人节版本当成\"没有加载器构建\"，一律隐藏了\nFabric / Quilt / NeoForge。实际上它们各有各的支持情况，不能一概而论。\n\n感谢群友「打游戏的阿坤」实测指出这个问题。这次我拉了三个官方目录逐条核对：\n\nFabric（meta.fabricmc.net，537 个版本）\n  能用的：3D Shareware v1.34、20w14infinite、22w13oneBlockAtATime、\n         23w13a_or_b、24w14potato、25w14craftmine、26w14a\n  不能用的：15w14a、1.RV-Pre1、2.0 系列\n\nQuilt（meta.quiltmc.org，448 个版本）\n  能用的：20w14infinite、22w13oneBlockAtATime、23w13a_or_b、\n         24w14potato、25w14craftmine、26w14a\n  注意 3D Shareware v1.34 在 Quilt 里没有\n\nNeoForge\n  25w14craftmine 可以用（群友实测）\n\nLegacy Fabric（meta.legacyfabric.net，76 个版本）\n  能用的：15w14a、2.0 / 2.0_blue / 2.0_red / 2.0_purple\n  注意 1.RV-Pre1 官方目录里没有\n\n现在这些版本会按实际情况显示对应的加载器，不再全部隐藏。\n\n另外修了一个连带问题：Legacy Fabric 那边认的版本名是 2point0_purple，\n而游戏清单里写的是 2.0_purple，两个名字对不上，导致你选 2.0 系列时\nLegacy Fabric 那一行被误判成\"不支持\"藏起来了。现在两个写法都认。\n\n顺带说明 Legacy Fabric 和 Legacy Fabric API 支持范围不一样：\n  15w14a     → 加载器和 API 都有\n  1.RV-Pre1  → 只有 API（加载器官方没有）\n  2.0 系列   → 只有加载器（API 没有）\n\n—— 遇到问题请到 QQ 群反馈，记得带上版本号、手机型号、Android 版本和日志。"
+        "updateLog": "【1.6.5：修快照版本被误判成新版本 —— 11w47a 居然显示 NeoForge】\n\n群友「打游戏的阿坤」发现：选 11w47a 这类老快照时，NeoForge 那一行会显示出来，\n点进去当然装不上。他给的范围很准：11w47a ~ 18w22c 这些快照都有这个问题，\n1.13-pre1 以上正常。\n\n原因是判断\"版本够不够新\"时，代码一看到版本号里有字母就直接当成新版本放行了\n—— 这个规则本来是为 24w14a 这种现代快照写的，结果把 2011 年的 11w47a\n也一起放行了。\n\n现在改成：周快照先拆成年、周、序号三段再比，跟 Fabric / Quilt 用的是同一套口径。\n这样 11w47a（2011 年）就正确地判成\"太老\"，而 23w31a（1.20 起始周）正常显示。\n\n同时把\"认不出版本形态\"的默认行为从\"放行\"改成\"不显示\"——\n宁可少显示一行，也不要让你点开一个空列表。\n\n—— 遇到问题请到 QQ 群反馈，记得带上版本号、手机型号、Android 版本和日志。"
     }
 }
