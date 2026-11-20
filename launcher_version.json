@@ -1,16 +1,16 @@
 {
     "latestRelease": {
-        "versionCode": 365,
-        "versionName": "1.6.3",
-        "date": "2026-11-19",
+        "versionCode": 366,
+        "versionName": "1.6.4",
+        "date": "2026-11-20",
         "url": [
-            "https://github.com/ALLEN201123/Quanta-Craft-Launcher/releases/download/v1.6.3/QCL-release-1.6.3-universal.apk",
-            "https://github.com/ALLEN201123/Quanta-Craft-Launcher/releases/download/v1.6.3/QCL-release-1.6.3-arm64.apk",
-            "https://github.com/ALLEN201123/Quanta-Craft-Launcher/releases/download/v1.6.3/QCL-release-1.6.3-arm.apk",
-            "https://github.com/ALLEN201123/Quanta-Craft-Launcher/releases/download/v1.6.3/QCL-release-1.6.3-x86_64.apk",
-            "https://github.com/ALLEN201123/Quanta-Craft-Launcher/releases/download/v1.6.3/QCL-release-1.6.3-x86.apk"
+            "https://github.com/ALLEN201123/Quanta-Craft-Launcher/releases/download/v1.6.4/QCL-release-1.6.4-universal.apk",
+            "https://github.com/ALLEN201123/Quanta-Craft-Launcher/releases/download/v1.6.4/QCL-release-1.6.4-arm64.apk",
+            "https://github.com/ALLEN201123/Quanta-Craft-Launcher/releases/download/v1.6.4/QCL-release-1.6.4-arm.apk",
+            "https://github.com/ALLEN201123/Quanta-Craft-Launcher/releases/download/v1.6.4/QCL-release-1.6.4-x86_64.apk",
+            "https://github.com/ALLEN201123/Quanta-Craft-Launcher/releases/download/v1.6.4/QCL-release-1.6.4-x86.apk"
         ],
         "netdiskUrl": "https://pan.quark.cn/s/f2c26c4fb66b",
-        "updateLog": "【1.6.3：修一个加载器显示范围的漏判 —— 带后缀的版本号】\n\n上一版给所有加载器加了显示范围（Fabric 只在 1.14+、Quilt 只在 1.14+ 等），\n但判断版本号时有个漏洞：像 1.0.0-c2-1656 这种「带后缀」的版本，\n程序一看到后面有字母就当成「新版本」放行了，结果 Fabric / Fabric API /\nQuilt / Quilt API 四行照旧显示，点进去又装不上。\n\n修法：先把 - 后面的后缀剥掉，只拿主干版本号去比。\n现在 1.0.0-c2-1656 会被正确识别为 1.0.0，远低于 1.14，四行全部隐藏。\n\n顺带修好的还有 1.21.5-pre2 这类预发布 —— 以前也被漏判成放行，\n现在按 1.21.5 判断，行为正确（1.21.5 >= 1.14，所以照样显示，这是对的）。\n\n感谢群友「打游戏的阿坤」的截图反馈。\n\n—— 遇到问题请到 QQ 群反馈，记得带上版本号、手机型号、Android 版本和日志。"
+        "updateLog": "【1.6.4：愚人节版本不该一刀切】\n\n上一版（1.6.3）我判断错了：把所有愚人节版本当成\"没有加载器构建\"，一律隐藏了\nFabric / Quilt / NeoForge。实际上它们各有各的支持情况，不能一概而论。\n\n感谢群友「打游戏的阿坤」实测指出这个问题。这次我拉了三个官方目录逐条核对：\n\nFabric（meta.fabricmc.net，537 个版本）\n  能用的：3D Shareware v1.34、20w14infinite、22w13oneBlockAtATime、\n         23w13a_or_b、24w14potato、25w14craftmine、26w14a\n  不能用的：15w14a、1.RV-Pre1、2.0 系列\n\nQuilt（meta.quiltmc.org，448 个版本）\n  能用的：20w14infinite、22w13oneBlockAtATime、23w13a_or_b、\n         24w14potato、25w14craftmine、26w14a\n  注意 3D Shareware v1.34 在 Quilt 里没有\n\nNeoForge\n  25w14craftmine 可以用（群友实测）\n\nLegacy Fabric（meta.legacyfabric.net，76 个版本）\n  能用的：15w14a、2.0 / 2.0_blue / 2.0_red / 2.0_purple\n  注意 1.RV-Pre1 官方目录里没有\n\n现在这些版本会按实际情况显示对应的加载器，不再全部隐藏。\n\n另外修了一个连带问题：Legacy Fabric 那边认的版本名是 2point0_purple，\n而游戏清单里写的是 2.0_purple，两个名字对不上，导致你选 2.0 系列时\nLegacy Fabric 那一行被误判成\"不支持\"藏起来了。现在两个写法都认。\n\n顺带说明 Legacy Fabric 和 Legacy Fabric API 支持范围不一样：\n  15w14a     → 加载器和 API 都有\n  1.RV-Pre1  → 只有 API（加载器官方没有）\n  2.0 系列   → 只有加载器（API 没有）\n\n—— 遇到问题请到 QQ 群反馈，记得带上版本号、手机型号、Android 版本和日志。"
     }
 }
